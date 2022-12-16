@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <title>台风梅花监控系统——展示</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+
+  <body class="bg01">
+    <header class="header">
+      <h3>台风梅花监控系统</h3>
+    </header>
+
+    <div class="wrapper">
+      <div class="container-fluid">
+        <div class="row fill-h">
+          <div class="col-lg-3 fill-h">
+            <div class="xpanel-wrapper xpanel-wrapper-2">
+              <div class="xpanel">
+                <!-- 地图飞线 -->
+                <h4 class="dfig dtitle">梅花登陆地点预测：上海市</h4>
+                <h4 class="dfig dtitle">预计登陆时间：2022年9月15日00时30分</h4>
+                <h4 class="dfig dtitle">
+                  登陆时级别：<strong class="level">台风级</strong>
+                </h4>
+                <div class="fill-h" id="flyMap"></div>
+              </div>
+            </div>
+            <div class="xpanel-wrapper xpanel-wrapper-2">
+              <div class="xpanel">
+                <!-- 世界地图 -->
+                <h4 class="dfig dtitle">当前时间：2022年9月13日00时00分</h4>
+                <h4 class="dfig dtitle">当前梅花位置：东经124.1度，北纬25度</h4>
+                <h4 class="dfig dtitle">中心海平面气压：960 hPa</h4>
+                <h4 class="dfig dtitle">中心最大风速：38 m/s</h4>
+                <img src="img/tfrs.webp" width="340" height="240" />
+                <!-- <div class="fill-h" id="worldMap"></div> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 fill-h">
+            <div class="xpanel-wrapper xpanel-wrapper-1">
+              <div class="xpanel">
+                <!-- 地图散点 -->
+                <div class="fill-h" id="scatterMap"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 fill-h">
+            <div class="xpanel-wrapper xpanel-wrapper-3">
+              <div class="xpanel">
+                <!-- 省份地图 -->
+                <h4 class="dfig dtitle right-title">现场照片</h4>
+                <div class="buttons-pics buttons-collection">
+                  <!-- 奉贤渔船: [121.5802, 30.831],
+					松江稻田: [121.290763, 31.032544],
+					临港建筑工地: [121.964, 30.889],
+					崇明青草沙: [121.68688, 31.432717],
+					杨浦低洼道路: [121.539, 31.319],
+					南北高架挂牌: [121.481, 31.207],
+					浦东国际机场: [121.8196, 31.1592], -->
+                  <button class="button buttons-pic fx">奉贤渔船</button>
+                  <button class="button buttons-pic sj">孙桥农业园区</button>
+                  <button class="button buttons-pic lg">临港建筑工地</button>
+                  <button class="button buttons-pic qcs">崇明青草沙</button>
+                  <!-- <button class="button buttons-pic yp">杨浦低洼道路</button> -->
+                  <button class="button buttons-pic road">上海公共交通</button>
+                  <button class="button buttons-pic pd">黄浦江</button>
+                </div>
+                <!-- <div class="fill-h" id="provinceMap"></div> -->
+              </div>
+            </div>
+            <div class="xpanel-wrapper xpanel-wrapper-3">
+              <div class="xpanel">
+                <!-- 城市地图 -->
+                <h4 class="dfig dtitle right-title">预计影响</h4>
+                <!-- <div class="buttons-affects buttons-collection"> -->
+                  <!-- 奉贤渔船: [121.5802, 30.831],
+					  松江稻田: [121.290763, 31.032544],
+					  临港建筑工地: [121.964, 30.889],
+					  崇明青草沙: [121.68688, 31.432717],
+					  杨浦低洼道路: [121.539, 31.319],
+					  南北高架挂牌: [121.481, 31.207],
+					  浦东国际机场: [121.8196, 31.1592], -->
+                  <!-- <button class="button buttons-affect fx">奉贤渔船</button>
+                  <button class="button buttons-affect sj">松江稻田</button>
+                  <button class="button buttons-affect lg">临港建筑工地</button>
+                  <button class="button buttons-affect qcs">崇明青草沙</button>
+                  <button class="button buttons-affect yp">杨浦低洼道路</button>
+                  <button class="button buttons-affect road">
+                    南北高架挂牌
+                  </button>
+                  <button class="button buttons-affect pd">浦东国际机场</button> -->
+
+                <!-- </div> -->
+				<div class="affect-content">
+					<p class="affect affect-fx"><strong>奉贤渔船：</strong>无法捕鱼作业，船只可能受损</p>
+					<p class="affect affect-sj"><strong>孙桥农业园区：</strong>大风损毁蔬菜大棚，农田被淹</p>
+					<p class="affect affect-lg"><strong>临港建筑工地：</strong>无法正常作业，大型工具器械容易坠落导致经济损失和人员伤亡</p>
+					<p class="affect affect-qcs"><strong>崇明青草沙：</strong>导致海水倒灌，形成咸潮 水质变差</p>
+					<!-- <p class="affect affect-yp"><strong>杨浦低洼道路：</strong>大雨造成道路积水，造成城市内涝</p> -->
+					<p class="affect affect-road"><strong>上海公共交通：</strong>行车能见度降低，事故概率增加</p>
+					<p class="affect affect-pd"><strong>黄浦江：</strong>水位上涨，城市内涝</p>
+					<!-- <div class="fill-h" id="cityMap"></div> -->
+				  </div>
+                <!-- <div class="fill-h" id="countyMap"></div> -->
+              </div>
+				
+            </div>
+            <div class="xpanel-wrapper xpanel-wrapper-3">
+              <div class="xpanel">
+                <!-- 区县地图 -->
+                <h4 class="dfig dtitle right-title">应对措施</h4>
+                <!-- <div class="buttons-responsives buttons-collection"> -->
+                  <!-- 奉贤渔船: [121.5802, 30.831],
+						松江稻田: [121.290763, 31.032544],
+						临港建筑工地: [121.964, 30.889],
+						崇明青草沙: [121.68688, 31.432717],
+						杨浦低洼道路: [121.539, 31.319],
+						南北高架挂牌: [121.481, 31.207],
+						浦东国际机场: [121.8196, 31.1592], -->
+                  <!-- <button class="button buttons-responsive fx">奉贤渔船</button>
+                  <button class="button buttons-responsive sj">松江稻田</button>
+                  <button class="button buttons-responsive lg">
+                    临港建筑工地
+                  </button>
+                  <button class="button buttons-responsive qcs">
+                    崇明青草沙
+                  </button>
+                  <button class="button buttons-responsive yp">
+                    杨浦低洼道路
+                  </button>
+                  <button class="button buttons-responsive road">
+                    南北高架挂牌
+                  </button>
+                  <button class="button buttons-responsive pd">
+                    浦东国际机场
+                  </button> -->
+
+                  
+                <!-- </div> -->
+				<div class="responsive-content">
+					<p class="responsive responsive-fx"><strong>奉贤渔船：</strong>停止捕捞作业，船只进港避风。</p>
+					<p class="responsive responsive-sj"><strong>孙桥农业园区：</strong>加固、维护大棚，抢收蔬菜</p>
+					<p class="responsive responsive-lg"><strong>临港建筑工地：</strong>暂停施工，加固脚手架等建筑工具</p>
+					<p class="responsive responsive-qcs"><strong>崇明青草沙：</strong>及时监测水质，上游开闸放水</p>
+					<!-- <p class="responsive responsive-yp"><strong>杨浦低洼道路：</strong>利用防汛沙袋拦截积水，使用抽水机进行排水</p> -->
+					<p class="responsive responsive-road"><strong>上海公共交通：</strong>增派交警巡视数量，及时指挥交通</p>
+					<p class="responsive responsive-pd"><strong>黄浦江：</strong>监视水位，开闸放水，加固堤坝</p>
+					<!-- <div class="fill-h" id="cityMap"></div> -->
+				  </div>
+				
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/echarts-3.8.5.min.js"></script>
+    <script type="text/javascript" src="js/echarts-map-world.js"></script>
+    <script type="text/javascript" src="js/echarts-map-china.js"></script>
+    <script
+      type="text/javascript"
+      src="js/echarts-china-provinces/jiangsu.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/echarts-china-cities/jiang1_su1_su1_zhou1.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="js/echarts-china-counties/jiang1su1_su1zhou1_kun1shan1shi4.js"
+    ></script>
+    <script type="text/javascript">
+      $(function () {
+        /******************* 地图飞线 ******************/
+        //初始化echarts实例
+        const flyMap = echarts.init(document.getElementById("flyMap"));
+        //城市经纬度
+        const originName = "洛阳";
+        const flyGeo = {
+          洛阳: [112.460299, 34.62677],
+          西安: [108.946466, 34.347269],
+          兰州: [103.84044, 36.067321],
+          乌鲁木齐: [87.62444, 43.830763],
+          包头: [109.846544, 40.662929],
+          西宁: [101.78443, 36.623393],
+          银川: [106.258602, 38.487834],
+          成都: [104.081534, 30.655822],
+          重庆: [106.558434, 29.568996],
+          拉萨: [91.120789, 29.65005],
+          昆明: [102.852448, 24.873998],
+          贵阳: [106.636577, 26.653325],
+          太原: [112.534919, 37.873219],
+          武汉: [114.311582, 30.598467],
+          长沙: [112.945473, 28.234889],
+          南昌: [115.864589, 28.689455],
+          合肥: [117.233443, 31.826578],
+          杭州: [120.215503, 30.253087],
+          广州: [113.271431, 23.135336],
+          北京: [116.413384, 39.910925],
+          天津: [117.209523, 39.093668],
+          上海: [121.192022, 31.081122],
+          当前位置: [124.1, 25],
+          九一三六点: [124.1, 23],
+          九一三正点: [124, 24],
+          九一三晚点: [123.9, 26.4],
+          九一四零点: [123.7, 27],
+        };
+        //飞线数据
+        var flyVal = [
+          [{ name: "上海" }, { name: "上海", value: 100 }],
+          //   [{ name: "九一三六点" }, { name: "九一三零点", value: 10 }],
+          //   [{ name: "九一三正点" }, { name: "九一三六点", value: 10 }],
+          //   [{ name: "九一三晚点" }, { name: "九一三正点", value: 10 }],
+          //   [{ name: "九一四零点" }, { name: "九一三晚点", value: 10 }],
+          [{ name: "上海" }, { name: "当前位置", value: 50 }],
+          //   [{ name: "上海" }, { name: "兰州", value: 25 }],
+          //   [{ name: "洛阳" }, { name: "乌鲁木齐", value: 55 }],
+          //   [{ name: "洛阳" }, { name: "包头", value: 60 }],
+          //   [{ name: "洛阳" }, { name: "西宁", value: 45 }],
+          //   [{ name: "洛阳" }, { name: "银川", value: 35 }],
+          //   [{ name: "洛阳" }, { name: "成都", value: 35 }],
+          //   [{ name: "洛阳" }, { name: "重庆", value: 40 }],
+          //   [{ name: "洛阳" }, { name: "拉萨", value: 45 }],
+          //   [{ name: "洛阳" }, { name: "昆明", value: 50 }],
+          //   [{ name: "洛阳" }, { name: "贵阳", value: 55 }],
+          //   [{ name: "洛阳" }, { name: "太原", value: 60 }],
+          //   [{ name: "洛阳" }, { name: "武汉", value: 65 }],
+          //   [{ name: "洛阳" }, { name: "长沙", value: 70 }],
+          //   [{ name: "洛阳" }, { name: "南昌", value: 75 }],
+          //   [{ name: "洛阳" }, { name: "合肥", value: 80 }],
+          //   [{ name: "洛阳" }, { name: "杭州", value: 85 }],
+          //   [{ name: "洛阳" }, { name: "广州", value: 90 }],
+          //   [{ name: "洛阳" }, { name: "北京", value: 95 }],
+          //   [{ name: "洛阳" }, { name: "上海", value: 100 }],
+        ];
+        //数据转换，转换后格式：[{fromName:'cityName', toName:'cityName', coords:[[lng, lat], [lng, lat]]}, {...}]
+        const convertFlyData = function (data) {
+          let res = [];
+          for (let i = 0; i < data.length; i++) {
+            let dataItem = data[i];
+            let toCoord = flyGeo[dataItem[0].name];
+            let fromCoord = flyGeo[dataItem[1].name];
+            if (fromCoord && toCoord) {
+              res.push({
+                fromName: dataItem[1].name,
+                toName: dataItem[0].name,
+                coords: [fromCoord, toCoord],
+              });
+            }
+          }
+          return res;
+        };
+        //报表配置
+        const flySeries = [];
+        [[originName, flyVal]].forEach(function (item, i) {
+          flySeries.push(
+            {
+              name: item[0],
+              type: "lines",
+              zlevel: 1,
+              symbol: ["none", "none"],
+              symbolSize: 0,
+              effect: {
+                //特效线配置
+                show: true,
+                period: 5, //特效动画时间，单位s
+                trailLength: 0.1, //特效尾迹的长度，从0到1
+                symbol: "arrow",
+                symbolSize: 5,
+              },
+              lineStyle: {
+                normal: {
+                  color: "#f19000",
+                  width: 1,
+                  opacity: 0.6,
+                  curveness: 0.2, //线的平滑度
+                },
+              },
+              data: convertFlyData(item[1]),
+            },
+            {
+              name: item[0],
+              type: "effectScatter",
+              coordinateSystem: "geo",
+              zlevel: 2,
+              rippleEffect: {
+                //涟漪特效
+                period: 5, //特效动画时长
+                scale: 4, //波纹的最大缩放比例
+                brushType: "stroke", //波纹的绘制方式：stroke | fill
+              },
+              label: {
+                normal: {
+                  show: false,
+                  position: "right",
+                  formatter: "{b}",
+                },
+              },
+              symbol: "circle",
+              symbolSize: function (val) {
+                //根据某项数据值设置符号大小
+                return val[2] / 10;
+              },
+              itemStyle: {
+                normal: {
+                  color: "#f19000",
+                },
+              },
+              data: item[1].map(function (dataItem) {
+                return {
+                  name: dataItem[1].name,
+                  value: flyGeo[dataItem[1].name].concat([dataItem[1].value]),
+                };
+              }),
+            },
+            {
+              //与上层的点叠加
+              name: item[0],
+              type: "scatter",
+              coordinateSystem: "geo",
+              zlevel: 3,
+              symbol: "circle",
+              symbolSize: function (val) {
+                //根据某项数据值设置符号大小
+                return val[2] / 15;
+              },
+              itemStyle: {
+                normal: {
+                  color: "#f00",
+                },
+              },
+              data: item[1].map(function (dataItem) {
+                return {
+                  name: dataItem[1].name,
+                  value: flyGeo[dataItem[1].name].concat([dataItem[1].value]),
+                };
+              }),
+            }
+          );
+        });
+
+        //报表配置项
+        const flyMapOpt = {
+          title: {
+            show: false,
+            text: "地图飞线",
+            x: "center",
+            textStyle: {
+              color: "#fff",
+            },
+          },
+          tooltip: {
+            trigger: "item",
+            formatter: function (params) {
+              if (params.value) {
+                return params.name + " : " + params.value[2];
+              } else {
+                return params.name;
+              }
+            },
+          },
+          geo: {
+            map: "china",
+            roam: false, //开启鼠标缩放和漫游
+            zoom: 1, //地图缩放级别
+            selectedMode: false, //选中模式：single | multiple
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            layoutCenter: ["50%", "40%"], //设置后left/right/top/bottom等属性无效
+            layoutSize: "100%", //保持地图宽高比
+            label: {
+              emphasis: {
+                show: false,
+              },
+            },
+            itemStyle: {
+              normal: {
+                areaColor: "#101f32",
+                borderWidth: 1.1,
+                borderColor: "#43d0d6",
+              },
+              emphasis: {
+                areaColor: "#069",
+              },
+            },
+          },
+          series: flySeries,
+        };
+        //渲染报表
+        flyMap.setOption(flyMapOpt);
+
+        /***************** 地图散点 ******************/
+        //初始化echarts实例
+        const scatterMap = echarts.init(document.getElementById("scatterMap"));
+        //城市经纬度
+        const scatterGeo = {
+          奉贤渔船: [121.5802, 30.831],
+          松江稻田: [121.290763, 31.032544],
+          临港建筑工地: [121.964, 30.889],
+          崇明青草沙: [121.68688, 31.432717],
+          杨浦低洼道路: [121.539, 31.319],
+          南北高架挂牌: [121.481, 31.207],
+          浦东国际机场: [121.8196, 31.1592],
+   
+        };
+        //城市数据
+        const scatterVal = [
+          { name: "奉贤渔船", value: 130 },
+          { name: "松江稻田", value: 150 },
+          { name: "临港建筑工地", value: 180 },
+          { name: "崇明青草沙", value: 100 },
+          { name: "杨浦低洼道路", value: 120 },
+          { name: "南北高架挂牌", value: 190 },
+          { name: "浦东国际机场", value: 199 },
+ 
+        ];
+        //数据转换，转换后的格式：[{name: 'cityName', value: [lng, lat, val]}, {...}]
+        const convertScatterData = function (data) {
+          let res = [];
+          for (let i = 0; i < data.length; i++) {
+            let geoCoord = scatterGeo[data[i].name];
+            if (geoCoord) {
+              res.push({
+                name: data[i].name,
+                value: geoCoord.concat(data[i].value),
+              });
+            }
+          }
+          return res;
+        };
+        //地图配置项
+        const sactterMapOpt = {
+          title: {
+            text: "“梅花”受灾事件监测",
+            x: "center",
+            textStyle: {
+              color: "#fff",
+            },
+          },
+          legend: {
+            data: ["紧急程度"], //与series的name属性对应
+            orient: "vertical",
+            y: "bottom",
+            x: "right",
+            textStyle: {
+              color: "#fff",
+            },
+          },
+          tooltip: {
+            trigger: "item",
+            formatter: function (params) {
+              return params.name + " : " + params.value[2];
+            },
+          },
+          visualMap: {
+            min: 0,
+            max: 200,
+            calculable: true,
+            inRange: {
+              color: ["#50a3ba", "#eac736", "#d94e5d"],
+            },
+            textStyle: {
+              color: "#fff",
+            },
+          },
+          geo: {
+            map: "china",
+            roam: true, //开启鼠标缩放和漫游
+            zoom: 1, //地图缩放级别
+            selectedMode: false, //选中模式：single | multiple
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            layoutCenter: ["50%", "50%"], //设置后left/right/top/bottom等属性无效
+            layoutSize: "100%",
+            label: {
+              emphasis: {
+                show: false,
+              },
+            },
+            itemStyle: {
+              normal: {
+                areaColor: "#101f32",
+                borderWidth: 1.1,
+                borderColor: "#43d0d6",
+              },
+              emphasis: {
+                areaColor: "#069",
+              },
+            },
+          },
+          series: [
+            {
+              name: "紧急程度",
+              type: "scatter",
+              coordinateSystem: "geo",
+              symbolSize: 12,
+              label: {
+                normal: {
+                  show: false,
+                },
+                emphasis: {
+                  show: false,
+                },
+              },
+              itemStyle: {
+                emphasis: {
+                  borderColor: "#fff",
+                  borderWidth: 1,
+                },
+              },
+              data: convertScatterData(scatterVal),
+            },
+          ],
+        };
+        //渲染报表
+        scatterMap.setOption(sactterMapOpt);
+
+        /******************* 世界地图 ******************/
+        //初始化echarts实例
+        const worldMap = echarts.init(document.getElementById("worldMap"));
+        const worldMapOpt = {
+          geo: {
+            map: "world",
+            roam: false, //开启鼠标缩放和漫游
+            zoom: 1, //地图缩放级别
+            selectedMode: false, //选中模式：single | multiple
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            layoutCenter: ["50%", "50%"], //设置后left/right/top/bottom等属性无效
+            layoutSize: "100%",
+            label: {
+              emphasis: {
+                show: false,
+              },
+            },
+            itemStyle: {
+              normal: {
+                areaColor: "#101f32",
+                borderWidth: 1.1,
+                borderColor: "#43d0d6",
+              },
+              emphasis: {
+                areaColor: "#069",
+              },
+            },
+          },
+        };
+        worldMap.setOption(worldMapOpt);
+
+        /******************* 省份地图 ******************/
+        //初始化echarts实例
+        const provinceMap = echarts.init(
+          document.getElementById("provinceMap")
+        );
+        const provinceMapOpt = {
+          geo: {
+            map: "江苏",
+            roam: false, //开启鼠标缩放和漫游
+            zoom: 1, //地图缩放级别
+            selectedMode: false, //选中模式：single | multiple
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            layoutCenter: ["50%", "50%"], //设置后left/right/top/bottom等属性无效
+            layoutSize: "100%", //保持地图宽高比
+            label: {
+              emphasis: {
+                show: true,
+                color: "#f19000",
+              },
+            },
+            itemStyle: {
+              normal: {
+                areaColor: "#101f32",
+                borderWidth: 1.1,
+                borderColor: "#43d0d6",
+              },
+              emphasis: {
+                areaColor: "#069",
+              },
+            },
+          },
+        };
+        provinceMap.setOption(provinceMapOpt);
+
+        /******************* 城市地图 ******************/
+        //初始化echarts实例
+        const cityMap = echarts.init(document.getElementById("cityMap"));
+        const cityMapOpt = {
+          geo: {
+            map: "苏州",
+            roam: false, //开启鼠标缩放和漫游
+            zoom: 1, //地图缩放级别
+            selectedMode: false, //选中模式：single | multiple
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            layoutCenter: ["50%", "50%"], //设置后left/right/top/bottom等属性无效
+            layoutSize: "100%", //保持地图宽高比
+            label: {
+              emphasis: {
+                show: true,
+                color: "#f19000",
+              },
+            },
+            itemStyle: {
+              normal: {
+                areaColor: "#101f32",
+                borderWidth: 1.1,
+                borderColor: "#43d0d6",
+              },
+              emphasis: {
+                areaColor: "#069",
+              },
+            },
+          },
+        };
+        cityMap.setOption(cityMapOpt);
+
+        /******************* 区县地图 ******************/
+        //初始化echarts实例
+        const countyMap = echarts.init(document.getElementById("countyMap"));
+        const countyMapOpt = {
+          geo: {
+            map: "昆山市",
+            roam: false, //开启鼠标缩放和漫游
+            zoom: 1, //地图缩放级别
+            selectedMode: false, //选中模式：single | multiple
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            layoutCenter: ["50%", "50%"], //设置后left/right/top/bottom等属性无效
+            layoutSize: "100%", //保持地图宽高比
+            label: {
+              emphasis: {
+                show: true,
+                color: "#f19000",
+              },
+            },
+            itemStyle: {
+              normal: {
+                areaColor: "#101f32",
+                borderWidth: 1.1,
+                borderColor: "#43d0d6",
+              },
+              emphasis: {
+                areaColor: "#069",
+              },
+            },
+          },
+        };
+        countyMap.setOption(countyMapOpt);
+
+        /********** 浏览器窗口改变时，重置报表大小 ****************/
+        window.onresize = function () {
+          flyMap.resize();
+          scatterMap.resize();
+          worldMap.resize();
+          provinceMap.resize();
+          cityMap.resize();
+          countyMap.resize();
+        };
+      });
+    </script>
+	<script>
+		const buttonFx = document.querySelector('.fx');
+		const buttonSj = document.querySelector('.sj')
+		const buttonRoad = document.querySelector('.road')
+		// const buttonYp = document.querySelector('.yp')
+		const buttonPd = document.querySelector('.pd')
+		const buttonLg = document.querySelector('.lg')
+		const buttonQcs = document.querySelector('.qcs')
+
+		buttonFx.addEventListener('click', function() {
+			window.open('./img/奉贤渔船.jpeg', 'image')
+		})
+		buttonSj.addEventListener('click', function() {
+			window.open('./img/孙桥.png', 'image')
+		})
+		buttonRoad.addEventListener('click', function() {
+			window.open('./img/上海公共交通.png', 'image')
+		})
+		// buttonYp.addEventListener('click', function() {
+		// 	window.open('./img/上海公共交通.png', 'image')
+		// })
+		buttonPd.addEventListener('click', function() {
+			window.open('./img/黄浦江.jpeg', 'image')
+		})
+		buttonLg.addEventListener('click', function() {
+			window.open('./img/临港.png', 'image')
+		})
+		buttonQcs.addEventListener('click', function() {
+			window.open('./img/奉贤渔船.jpeg', 'image')
+		})
+	</script>
+  </body>
+</html>
